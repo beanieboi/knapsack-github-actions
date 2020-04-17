@@ -22,3 +22,14 @@ jobs:
         gem install bundler
         bundle install --jobs 4 --retry 3
         KNAPSACK=true KNAPSACK_GENERATE_REPORT=true bundle exec rspec
+    - name: Commit files
+      run: |
+        git config --local user.email "action@github.com"
+        git config --local user.name "GitHub Action"
+        git add knapsack_rspec_report.json
+        git commit -m "Update knapsack_rspec_report.json"
+    - name: Push changes
+      uses: ad-m/github-push-action@master
+      with:
+        github_token: ${{ secrets.GITHUB_TOKEN }}
+        branch: update-knapsack-report
