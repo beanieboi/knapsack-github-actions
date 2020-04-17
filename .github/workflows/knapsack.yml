@@ -26,4 +26,4 @@ jobs:
         git add knapsack_rspec_report.json
         git commit -m "Update knapsack_rspec_report.json"
     - name: Push changes
-      run: git push https://${GITHUB_ACTOR}:${INPUT_GITHUB_TOKEN}@github.com/${REPOSITORY}.git HEAD:update-knapsack-report
+      run: git push origin HEAD:update-knapsack-report
