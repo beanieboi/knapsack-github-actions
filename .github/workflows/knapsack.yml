@@ -1,4 +1,4 @@
-name: Ruby
+name: Create new Knapsack Report
 
 on:
   push:
