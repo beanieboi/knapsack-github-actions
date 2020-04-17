@@ -27,3 +27,13 @@ jobs:
         git commit -m "Update knapsack_rspec_report.json"
     - name: Push changes
       run: git push origin HEAD:update-knapsack-report
+    - name: Initialize Pull Request
+      uses: gha-utilities/init-pull-request@v0.1.2
+      with:
+        verbose: true
+        pull_request_token: ${{ secrets.GITHUB_TOKEN }}
+        head: update-knapsack-report
+        base: master
+        title: 'Update Knapsack report'
+        body: >
+          This is a automated PR, if you approve, please merge
