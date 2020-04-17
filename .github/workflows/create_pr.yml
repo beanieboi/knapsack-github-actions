@@ -2,7 +2,8 @@ name: Create Knapsack PR
 
 on:
   push:
-    branches: [ update-knapsack-report ]
+    branches:
+      - 'update-knapsack-report'
 
 jobs:
   actions/create_knapsack_pr:
