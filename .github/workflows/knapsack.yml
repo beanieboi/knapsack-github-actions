@@ -35,5 +35,7 @@ jobs:
         head: update-knapsack-report
         base: master
         title: 'Update Knapsack report'
+        maintainer_can_modify: true
+        debug: true
         body: >
           This is a automated PR, if you approve, please merge
