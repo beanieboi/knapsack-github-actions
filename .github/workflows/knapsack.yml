@@ -1,22 +1,19 @@
 name: Create Knapsack Report
 
 on:
-  push:
-    branches: [ master ]
-  pull_request:
-    branches: [ master ]
+  schedule:
+    - cron: '*/5 * * * *'
 
 jobs:
   build:
-
     runs-on: ubuntu-latest
-
     steps:
     - uses: actions/checkout@v2
     - name: Set up Ruby 2.6
       uses: actions/setup-ruby@v1
       with:
         ruby-version: 2.6.x
+        github_token: ${{ secrets.GITHUB_TOKEN }}
     - name: Generate new Knapsack report
       run: |
         gem install bundler
@@ -29,7 +26,4 @@ jobs:
         git add knapsack_rspec_report.json
         git commit -m "Update knapsack_rspec_report.json"
     - name: Push changes
-      uses: ad-m/github-push-action@master
-      with:
-        github_token: ${{ secrets.GITHUB_TOKEN }}
-        branch: update-knapsack-report
+      run: git push https://${GITHUB_ACTOR}:${INPUT_GITHUB_TOKEN}@github.com/${REPOSITORY}.git HEAD:update-knapsack-report
